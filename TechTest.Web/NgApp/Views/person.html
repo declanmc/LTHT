@@ -1,0 +1,42 @@
+﻿<div data-ng-controller="PersonController" data-ng-init="init()">
+    <h1>Update {{person.getFullName()}}</h1>
+
+    <form class="form-horizontal">
+        <div>
+            <div class="top-buffer-large">
+                <h2>User Details</h2>
+                <hr />
+            </div>
+            <div class="row">
+                <div class="col-md-3 text-right top-buffer">
+                    <label for="IsAuthorised" class="right-buffer">Authorised</label>
+                    
+                    <input id="IsAuthorised" data-ng-model="person.isAuthorised" type="checkbox"></input>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3 text-right top-buffer">
+                    <label for="IsEnabled" class="right-buffer">Enabled</label>
+                    <input id="IsEnabled" data-ng-model="person.isEnabled" type="checkbox"></input>
+                </div>
+            </div>
+        </div>
+        <div>
+            <div class="top-buffer-large">
+                <h2>Favourite Colours</h2>
+                <hr/>
+            </div>
+            <div data-ng-repeat="colour in colours" class="row">
+                <div class="col-md-3 text-right top-buffer">
+                    <label for="{{colour.Name}}" class="right-buffer" data-ng-click="hideCheckbox(colour.Name)">{{colour.Name}}</label>
+                    <div class="checkbox-inline">
+                        <input id="{{colour.Name}}" data-ng-checked="person.hasColour(colour)" data-ng-click="person.addColour(colour)" type="checkbox"></input>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="text-center">
+            <input class="btn btn-primary" type="submit" ng-click="update()" value="Save Changes" /> <button class="btn btn-default" ng-click="cancel()">Cancel</button>
+        </div>
+    </form>
+</div>
